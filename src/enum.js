@@ -2,9 +2,6 @@ export function Enum(name, ...items) {
     Object.defineProperties(this, {
         name: {
             value: name
-        },
-        _items: {
-            value: items,
         }
     });
 
