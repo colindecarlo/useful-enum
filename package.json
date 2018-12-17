@@ -2,7 +2,7 @@
   "name": "useful-enum",
   "version": "0.1.0",
   "description": "An actually useful Enumeration",
-  "main": "index.js",
+  "main": "enum.js",
   "directories": {
     "test": "tests"
   },
