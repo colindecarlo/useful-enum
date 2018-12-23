@@ -71,5 +71,38 @@ describe("withEnum", () => {
         } catch (e) {
             expect(e.message).toMatch('Unsupported enum value');
         }
+    });
+
+    it('can have an enumerated property that doesnt have a value', () => {
+        const someObject = withEnum({
+            startOfTheWeek: daysOfTheWeek.notSet()
+        });
+
+        expect(someObject.startOfTheWeek.hasNoValue()).toBe(true);
+    });
+
+    it('can set the value of an valueless enumerated property to a valid value', () => {
+        const someObject = withEnum({
+            startOfTheWeek: daysOfTheWeek.notSet()
+        });
+
+        expect(someObject.startOfTheWeek.hasNoValue()).toBe(true);
+
+        someObject.startOfTheWeek = daysOfTheWeek.Friday;
+
+        expect(someObject.startOfTheWeek.hasNoValue()).toBe(false);
+        expect(someObject.startOfTheWeek).toBe(daysOfTheWeek.Friday);
+    })
+
+    it('can unset the value of an enumerated property', () => {
+        const someObject = withEnum({
+            startOfTheWeek: daysOfTheWeek.Friday
+        });
+
+        expect(someObject.startOfTheWeek).toBe(daysOfTheWeek.Friday);
+        expect(someObject.startOfTheWeek.hasNoValue()).toBe(false);
+
+        someObject.startOfTheWeek = daysOfTheWeek.notSet();
+        expect(someObject.startOfTheWeek.hasNoValue()).toBe(true);
     })
 });

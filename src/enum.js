@@ -12,6 +12,11 @@ export function Enum(name, ...items) {
                 [item.toString()]: {
                     enumerable: true,
                     value: item
+                },
+                valueOf: {
+                    value: function () {
+                        return item;
+                    }
                 }
             })
         });
@@ -34,6 +39,20 @@ Enum.prototype.has = function (candidate) {
     return this[property] === candidate;
 }
 
+Enum.prototype.notSet = function () {
+    return Object.create(this, {
+        valueOf: {
+            value: function () {
+                return null;
+            }
+        }
+    });
+}
+
+Enum.prototype.hasNoValue = function () {
+    return this.valueOf() == null;
+}
+
 export function withEnum(targetObject) {
     Object.entries(targetObject).forEach(([property, value]) => {
         if (! (value instanceof Enum)) {
@@ -47,6 +66,10 @@ export function withEnum(targetObject) {
                 return value;
             },
             set(newValue) {
+                if (! newValue) {
+                    throw new Error(`Unsupported enum value ${newValue}`)
+                }
+                
                 const source = Object.getPrototypeOf(value);
 
                 if (Object.getPrototypeOf(newValue) === source) {
