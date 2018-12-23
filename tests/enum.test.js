@@ -1,4 +1,4 @@
-import Enum from '../src/enum'
+import Enum from '../src/enum';
 
 describe('Enum', () => {
 
@@ -33,14 +33,14 @@ describe('Enum', () => {
             expect(Object.getPrototypeOf(value)).toBe(daysOfTheWeek);
 
             expectedProperties.splice(expectedProperties.findIndex(candidate => candidate == property), 1);
-        })
+        });
     });
 
     it('knows which enumerated values is has', () => {
         expect(daysOfTheWeek.has(daysOfTheWeek.Friday)).toBe(true);
-    })
+    });
 
     it('knows which values it doesnt have too', () => {
-        expect(daysOfTheWeek.has("Friday")).toBe(false);
-    })
+        expect(daysOfTheWeek.has('Friday')).toBe(false);
+    });
 });

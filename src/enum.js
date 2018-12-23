@@ -37,7 +37,7 @@ Enum.prototype.has = function (candidate) {
     const [property] = properties[0];
 
     return this[property] === candidate;
-}
+};
 
 Enum.prototype.notSet = function () {
     return Object.create(this, {
@@ -47,11 +47,11 @@ Enum.prototype.notSet = function () {
             }
         }
     });
-}
+};
 
 Enum.prototype.hasNoValue = function () {
     return this.valueOf() == null;
-}
+};
 
 export function withEnum(targetObject) {
     Object.entries(targetObject).forEach(([property, value]) => {
@@ -67,7 +67,7 @@ export function withEnum(targetObject) {
             },
             set(newValue) {
                 if (! newValue) {
-                    throw new Error(`Unsupported enum value ${newValue}`)
+                    throw new Error(`Unsupported enum value ${newValue}`);
                 }
                 
                 const source = Object.getPrototypeOf(value);
@@ -78,12 +78,12 @@ export function withEnum(targetObject) {
                 }
 
                 if (! source.has(newValue)) {
-                    throw new Error(`Unsupported enum value ${newValue}`)
+                    throw new Error(`Unsupported enum value ${newValue}`);
                 }
 
                 value = source[newValue];
             }
-        })
+        });
     });
 
     return targetObject;

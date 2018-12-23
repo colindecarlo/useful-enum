@@ -1,6 +1,6 @@
 import { withEnum, Enum } from '../src/enum';
 
-describe("withEnum", () => {
+describe('withEnum', () => {
     const daysOfTheWeek = new Enum(
         'DAYS_OF_THE_WEEK',
         'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
@@ -14,11 +14,11 @@ describe("withEnum", () => {
         const descriptor = Object.getOwnPropertyDescriptor(someObject, 'friday');
         expect(descriptor).toHaveProperty('get');
         expect(descriptor).toHaveProperty('set');
-    })
+    });
 
     it('doesnt replace other properties with a getter and setter', () => {
         const someObject = withEnum({
-            friday: "funday"
+            friday: 'funday'
         });
 
         const descriptor = Object.getOwnPropertyDescriptor(someObject, 'friday');
@@ -52,7 +52,7 @@ describe("withEnum", () => {
         });
 
         try {
-            someObject.startOfTheWeek = "Sunday";
+            someObject.startOfTheWeek = 'Sunday';
         } catch (e) {
             expect(e.message).toMatch('Unsupported enum value');
         }
@@ -92,7 +92,7 @@ describe("withEnum", () => {
 
         expect(someObject.startOfTheWeek.hasNoValue()).toBe(false);
         expect(someObject.startOfTheWeek).toBe(daysOfTheWeek.Friday);
-    })
+    });
 
     it('can unset the value of an enumerated property', () => {
         const someObject = withEnum({
@@ -104,5 +104,5 @@ describe("withEnum", () => {
 
         someObject.startOfTheWeek = daysOfTheWeek.notSet();
         expect(someObject.startOfTheWeek.hasNoValue()).toBe(true);
-    })
+    });
 });
