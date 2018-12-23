@@ -7,12 +7,12 @@
   "bugs": "https://github.com/colindecarlo/useful-enum/issues",
   "homepage": "https://github.com/colindecarlo/useful-enum",
   "directories": {
-    "test": "tests"
+    "test": "__tests__"
   },
   "scripts": {
-    "style": "eslint src tests",
-    "style-fix": "eslint src tests --fix",
-    "test": "jest && eslint src tests"
+    "style": "eslint src __tests__",
+    "style-fix": "eslint src __tests__ --fix",
+    "test": "jest && eslint src __tests__"
   },
   "author": "Colin DeCarlo <colin@thedecarlos.ca>",
   "license": "ISC",
