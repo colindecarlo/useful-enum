@@ -1,7 +1,8 @@
 {
   "name": "useful-enum",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An actually useful Enumeration",
+  "keywords": ["enum", "enumeration", "type"],
   "main": "src/enum.js",
   "repository": "https://github.com/colindecarlo/useful-enum.git",
   "bugs": "https://github.com/colindecarlo/useful-enum/issues",
